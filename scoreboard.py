@@ -21,3 +21,4 @@ def scoreboard(scores_dictionary, upper_score,total_score):
     print "Chance         | "+str(scores_dictionary[12])
     print '---------------------------------------'
     print "Total          | "+str(total_score)
+    print '---------------------------------------'

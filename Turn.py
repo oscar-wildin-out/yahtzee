@@ -10,7 +10,7 @@ class Die(object):
     def roll(self):
         return random.randint(1, 6)
 
-def Turn(player_1_scores):
+def Turn(player_1_scores, player_scores_dictionary):
 
     d = Die()
     First_Roll = [d.roll(), d.roll(), d.roll(), d.roll(), d.roll()]
@@ -18,7 +18,6 @@ def Turn(player_1_scores):
     print(First_Roll)
 
     First_Keepers = keeper()
-    #input("Which dice (numbered 1-5) would you like to keep? ")
     Second_Roll = New_Roll(First_Roll, First_Keepers)
 
     Second_Keepers = keeper()
