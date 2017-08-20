@@ -32,15 +32,15 @@ def New_Roll(previous_roll, keepers):
 
     if keepers == 0:
         print '---------------------------------------'
-        print("Alright, we'll re-roll all the dice")
+        print("Ok, we'll re-roll all the dice")
     else:
         print '---------------------------------------'
-        print("Alright, we'll keep "+str(number_of_kept_dice)+" dice")
+        print("Ok, we'll keep %s dice" % number_of_kept_dice)
     print("Now we'll roll the remaining dice again")
 
     for x in range(5 - number_of_kept_dice):
         kept_dice.append(d.roll())
 
     print '---------------------------------------'
-    print("Here are your new dice: " + str(kept_dice))
+    print("Here are your new dice: %s" % kept_dice)
     return kept_dice

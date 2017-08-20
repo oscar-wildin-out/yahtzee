@@ -13,7 +13,7 @@ number_of_players = input("How many players are playing? ")
 player_names = raw_input("Please enter the player names: ").split(', ')
 
 while number_of_players != len(player_names):
-    player_names = raw_input("Please enter "+str(number_of_players)+" player names: ").split(', ')
+    player_names = raw_input("Please enter %s player names: " % number_of_players).split(', ')
 total_scores = dict()
 upper_scores = dict()
 player_scores = dict()
@@ -28,13 +28,14 @@ for i in player_names:
 
 for i in xrange(13):
     for name in player_names:
-        print '---------------------------------------'
+        format_line = '---------------------------------------'
+        print format_line
         if len(player_names) > 1: #If only one player is playing, it is unnecessary to keep telling them it's their turn
-            print "It is now "+name+"\'s turn"
+            print "It is now %s\'s turn" % name
 
         if raw_input("Would you like to check your scoreboard? ").lower() ==  "yes":
-            print '---------------------------------------'
-            print name+"\'s Scoreboard:"
+            print format_line
+            print "%s\'s Scoreboard:" % name
             scoreboard(player_scores_dictionary[name],upper_scores[name],total_scores[name])
 
         round_result = Turn(player_scores[name], player_scores_dictionary[name]) #Turn returns the score for the round and the 'hand' that they used
@@ -63,17 +64,17 @@ for i in xrange(13):
                 player_scores_dictionary[name][hand] = "Used"
             else: player_scores_dictionary[name][hand] = score
             total_scores[name] += score
-        print "Your score for this turn is " + str(score)
+        print "Your score for this turn is %s" % score
 
 for name in player_names:
-    print '---------------------------------------'
-    print name+", your upper score was " + str(upper_scores[name])
+    print format_line
+    print name+", your upper score was %s" % upper_scores[name]
     if upper_scores[name] >= 63:
-        print "Since your upper score of "+str(upper_scores[name])+" was greater than 63, you receive 35 bonus points!"
+        print "Since your upper score of %s was greater than 63, you receive 35 bonus points!" % upper_scores[name]
         total_scores[name] += 35
     elif upper_scores[name] < 63: print "Since you didn't score 63 or over you do not qualify for the bonus"
-    print "Your grand total is " + str(total_scores[name])
+    print "Your grand total is %s" % total_scores[name]
 
-print '---------------------------------------'
+print format_line
 winner = max(total_scores.iteritems(), key=operator.itemgetter(1))[0]
-print "The winner is "+winner+", with a score of "+str(total_scores[winner])
+print "The winner is %s, with a score of %s" % (winner, total_scores[winner])

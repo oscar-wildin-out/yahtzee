@@ -36,7 +36,7 @@ def scoring(score_choice_value, dice_count, roll, score_array, score_choice_word
     if score_choice_value > 5:
         scores = [0,0,0,0,0,0, sum(roll), sum(roll), 25, 30, 40, 50, sum(roll)]
         if score_array[score_choice_value] == 0:
-            print "Since you have not rolled a " + score_choice_word + " you'll receive no points for this turn"
+            print "Since you have not rolled a %s you'll receive no points for this turn" % score_choice_word
             result = [0, score_choice_value]
         else: result = [scores[score_choice_value], score_choice_value]
     else:

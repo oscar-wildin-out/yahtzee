@@ -39,7 +39,7 @@ def Turn(player_1_scores, player_scores_dictionary):
             score_choice_word = score_choice_values[1]
     else:
         while player_1_scores[score_choice_value] == 1:# or score_array[score_choice_value] == 0:
-            print "You've already used " + score_choice_word
+            print "You've already used %s" % score_choice_word
             score_choice_values = score_choice()
             score_choice_value = score_choice_values[0]
             score_choice_word = score_choice_values[1]
