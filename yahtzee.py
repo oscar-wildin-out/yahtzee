@@ -10,6 +10,7 @@ import operator
 
 number_of_players = input("How many players are playing? ")
 player_names = raw_input("Please enter the player names: ").split(', ')
+print "This text should be changed"
 while number_of_players != len(player_names):
     player_names = raw_input("Please enter "+str(number_of_players)+" player names: ").split(', ')
 total_scores = dict()
