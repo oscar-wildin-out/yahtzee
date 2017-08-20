@@ -7,7 +7,7 @@ from New_Roll import New_Roll
 from Turn import Turn
 from scoreboard import scoreboard
 import operator
-#This is my multiple_yahtzees branch
+print "This is my multiple_yahtzees branch"
 
 number_of_players = input("How many players are playing? ")
 player_names = raw_input("Please enter the player names: ").split(', ')
