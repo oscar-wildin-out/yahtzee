@@ -31,14 +31,19 @@ def Turn(player_1_scores, player_scores_dictionary):
     score_choice_value = score_choice_values[0]
     score_choice_word = score_choice_values[1]
 
-    while player_1_scores[score_choice_value] == 1:# or score_array[score_choice_value] == 0:
-        print "You've already used " + score_choice_word
-        score_choice_values = score_choice()
-        score_choice_value = score_choice_values[0]
-        score_choice_word = score_choice_values[1]
+    if score_choice_value == 11:
+        if player_scores_dictionary[11] == "Used":
+            print "You've already used Yahtzee"
+            score_choice_values = score_choice()
+            score_choice_value = score_choice_values[0]
+            score_choice_word = score_choice_values[1]
+    else:
+        while player_1_scores[score_choice_value] == 1:# or score_array[score_choice_value] == 0:
+            print "You've already used " + score_choice_word
+            score_choice_values = score_choice()
+            score_choice_value = score_choice_values[0]
+            score_choice_word = score_choice_values[1]
 
     result = scoring(score_choice_value, dice_count, Third_Roll, score_array, score_choice_word)
-
-    print "Your score for this turn is " + str(result[0])
 
     return result

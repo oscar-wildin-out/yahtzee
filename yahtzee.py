@@ -31,6 +31,7 @@ for i in xrange(13):
         print '---------------------------------------'
         if len(player_names) > 1: #If only one player is playing, it is unnecessary to keep telling them it's their turn
             print "It is now "+name+"\'s turn"
+
         if raw_input("Would you like to check your scoreboard? ").lower() ==  "yes":
             print '---------------------------------------'
             print name+"\'s Scoreboard:"
@@ -43,14 +44,26 @@ for i in xrange(13):
         if hand < 6:
             upper_scores[name] += score #adds the score to the upper_score if applicable
 
-        player_scores[name][hand] = 1 #Checks off that this hand has been used in the player_scores list
-
-
-        if score == 0:
-            player_scores_dictionary[name][hand] = "Used"
-        else: player_scores_dictionary[name][hand] = score
-
-        total_scores[name] += score
+        if hand == 11: #Yahtzees will be treated as a special case
+            if score == 0:
+                player_scores_dictionary[name][11] = "Used"
+            elif player_scores[name][hand] == 0:
+                player_scores[name][11] += 1
+                player_scores_dictionary[name][11] = "50"
+                total_scores[name] += 50
+                score = 50
+            else:
+                player_scores[name][11] +=1
+                player_scores_dictionary[name][11] += ", 100"
+                total_scores[name] += 100
+                score = 100
+        else:
+            player_scores[name][hand] = 1 #Checks off that this hand has been used in the player_scores list
+            if score == 0:
+                player_scores_dictionary[name][hand] = "Used"
+            else: player_scores_dictionary[name][hand] = score
+            total_scores[name] += score
+        print "Your score for this turn is " + str(score)
 
 for name in player_names:
     print '---------------------------------------'
